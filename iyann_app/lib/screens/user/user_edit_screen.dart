@@ -14,7 +14,7 @@ class _UserEditScreenState extends State<UserEditScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
   bool _isInitializing = false;
-  
+
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -142,13 +142,29 @@ class _UserEditScreenState extends State<UserEditScreen> {
                     SizedBox(height: 24),
                     ElevatedButton(
                       onPressed: _isLoading ? null : _saveUser,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent, // Ganti primary dengan backgroundColor
+                        padding: EdgeInsets.symmetric(vertical: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
                       child: _isLoading
                           ? SizedBox(
                               height: 20,
                               width: 20,
-                              child: CircularProgressIndicator(strokeWidth: 2),
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                              ),
                             )
-                          : Text('Save'),
+                          : Text(
+                              'Save',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                     ),
                   ],
                 ),
